@@ -1,3 +1,4 @@
+import java.util.Random;
 import java.util.Scanner;
 
 /**
@@ -47,7 +48,8 @@ public class BingoGame {
         }
     }
 
-    int[] BingoCard = new int[5];
+    int[] BingoCard = {0, 0, 0, 0, 0};
+    boolean[] Covered = {false, false, false, false, false};
 
     public void  createBingoCard() {
         Scanner scanner = new Scanner(System.in);
@@ -78,8 +80,52 @@ public class BingoGame {
         }
     }
 
+    int[] DrawnNumbers = new int[19];
+    int DrawnAmount = 0;
     public void DrawNumber() {
+        if (BingoCard[0] == 0) {
+            System.out.println("You must first create a Bingo card before drawing a number!");
+            return;
+        }
 
+        int RandomNumber;
+        while (true) {
+            RandomNumber = (1 + (int) (Math.random() * 19)); // Get random number between [1 to 19]
+            boolean Found = false;
+            for (int i = 0; i < DrawnAmount; i++) {
+                if (DrawnNumbers[i] == RandomNumber) {
+                    Found = true;
+                    break;
+                }
+            }
+            if (Found == true) {
+                continue;
+            }
+            DrawnNumbers[DrawnAmount] = RandomNumber;
+            DrawnAmount++;
+            break;
+        }
+        System.out.println("A number is drawn! The ball reads the number: " + RandomNumber + "!");
+
+        for (int i = 0; i < BingoCard.length; i++) {
+            if (BingoCard[i] == RandomNumber) {
+                Covered[i] = true;
+            }
+        }
+
+        System.out.print("Your Bingo card: [ ");
+        for (int i = 0; i < BingoCard.length; i++) {
+            if (Covered[i] == true) {
+                System.out.print("(" + BingoCard[i] + ")");
+            } else {
+                System.out.print(BingoCard[i]);
+            }
+            if (i == BingoCard.length - 1) {
+                System.out.println(" ]");
+            } else {
+                System.out.print(", ");
+            }
+        }
     }
 
     public void CheckBingoCard() {
