@@ -48,6 +48,7 @@ public class Week10Exercise2{
     int SmallTrailers = 5;
     int LargeTrailers = 3;
     int SmallTrailerRented = 0;
+    int LargeTrailerRented = 0;
     String[] SmallTrailersRenters = new String[5];
     String[] LargeTrailersRenters = new String[3];
 
@@ -86,7 +87,16 @@ public class Week10Exercise2{
 
     public void OverviewDisplay()
     {
-        System.out.println(SmallTrailers);
-        System.out.println(LargeTrailers);
+        System.out.println("Rented small trailers: ");
+        for (int i = 0; i < SmallTrailerRented; i ++) {
+            System.out.println("     Small trailer " + (i + 1)+": " + SmallTrailersRenters[i] );
+        }
+        System.out.println("There are " + SmallTrailers + " out of 5 small trailers still available.");
+        System.out.println("Rented large trailers:");
+        for (int i = 0; i < LargeTrailerRented; i++) {
+            System.out.println("     Large trailer " + (i + 1) + ": " + LargeTrailersRenters[i]);
+        }
+        System.out.println("There are " + LargeTrailers + " out of 3 large trailers still available.");
+        System.out.println("There are " + (SmallTrailers + LargeTrailers) + " trailers available in total.");
     }
 }
