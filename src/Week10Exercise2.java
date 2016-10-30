@@ -60,6 +60,7 @@ public class Week10Exercise2{
         Scanner scanner = new Scanner(System.in);
         System.out.print("What is the last name of the customer? ");
         String LastName = scanner.next();
+
         System.out.print("What is the weight of the load (in kg)? ");
         Double Weight = scanner.nextDouble();
         if (Weight > 750) {
@@ -80,9 +81,58 @@ public class Week10Exercise2{
         SmallTrailerRented++;
     }
 
-    public void rentLargeTrailer()
-    {
-        System.out.println(LargeTrailers);
+    public void rentLargeTrailer() {
+        Scanner scanner = new Scanner(System.in);
+
+        if (LargeTrailers == 0) {
+            System.out.println("Unfortunately, all large trailers are out!.");
+            while (true) {
+                System.out.print("Would you like to rent a small trailer instead (y/n)?");
+                String input = scanner.next();
+                char answer = input.charAt(0);
+                if (answer == 'n')
+                    return;
+                if (answer == 'y') {
+                    rentSmallTrailer();
+                    return;
+                }
+            }
+        }
+
+        System.out.print("What is the last name of the customer? ");
+        String LastName = scanner.next();
+
+        while (true) {
+            System.out.print("Is the driver in possession of an E-type drivers license (y/n)?");
+            String input = scanner.next();
+            char answer = input.charAt(0);
+            if (answer == 'n') {
+                System.out.println("Unfortunately, a large trailer cannot be rented without a E-type drivers license.");
+                return;
+            }
+            if (answer == 'y') {
+                break;
+            }
+        }
+
+        System.out.print("What is the weight of the load (in kg)? ");
+        Double Weight = scanner.nextDouble();
+        if (Weight > 3000) {
+            System.out.println("Warning! The maximum load (3000 kg) is exceeded by " + (Weight - 3000) + " kg!");
+            while (true) {
+                System.out.print("Are you sure you want to rent the trailer (y/n)? ");
+                String input = scanner.next();
+                char answer = input.charAt(0);
+                if (answer == 'n')
+                    return;
+                if (answer == 'y') {
+                    break;
+                }
+            }
+        }
+        LargeTrailers --;
+        LargeTrailersRenters[LargeTrailerRented] = LastName;
+        LargeTrailerRented++;
     }
 
     public void OverviewDisplay()
