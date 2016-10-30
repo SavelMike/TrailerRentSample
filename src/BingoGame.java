@@ -80,8 +80,26 @@ public class BingoGame {
         }
     }
 
+    public void printBingoCard() {
+        System.out.print("Your Bingo card: [ ");
+        for (int i = 0; i < BingoCard.length; i++) {
+            if (Covered[i] == true) {
+                System.out.print("(" + BingoCard[i] + ")");
+            } else {
+                System.out.print(BingoCard[i]);
+            }
+            if (i == BingoCard.length - 1) {
+                System.out.println(" ]");
+            } else {
+                System.out.print(", ");
+            }
+        }
+    }
+
     int[] DrawnNumbers = new int[19];
     int DrawnAmount = 0;
+    int turnsAmount = 0;
+
     public void DrawNumber() {
         if (BingoCard[0] == 0) {
             System.out.println("You must first create a Bingo card before drawing a number!");
@@ -106,29 +124,25 @@ public class BingoGame {
             break;
         }
         System.out.println("A number is drawn! The ball reads the number: " + RandomNumber + "!");
+        turnsAmount++;
 
         for (int i = 0; i < BingoCard.length; i++) {
             if (BingoCard[i] == RandomNumber) {
                 Covered[i] = true;
             }
         }
-
-        System.out.print("Your Bingo card: [ ");
-        for (int i = 0; i < BingoCard.length; i++) {
-            if (Covered[i] == true) {
-                System.out.print("(" + BingoCard[i] + ")");
-            } else {
-                System.out.print(BingoCard[i]);
-            }
-            if (i == BingoCard.length - 1) {
-                System.out.println(" ]");
-            } else {
-                System.out.print(", ");
-            }
-        }
+        printBingoCard();
     }
 
     public void CheckBingoCard() {
-
+        printBingoCard();
+        for (int i = 0; i < Covered.length; i++) {
+            if (Covered[i] == false) {
+                System.out.println("Unfortunately you don’t have Bingo yet!");
+                return;
+            }
+        }
+        System.out.println("BINGO! All numbers are marked in " + turnsAmount + "turns.");
+        System.exit(0);
     }
 }
