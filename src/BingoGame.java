@@ -47,8 +47,35 @@ public class BingoGame {
         }
     }
 
-    public void  createBingoCard() {
+    int[] BingoCard = new int[5];
 
+    public void  createBingoCard() {
+        Scanner scanner = new Scanner(System.in);
+        for (int i = 0; i < BingoCard.length; i ++) {
+            while (true) {
+                System.out.print("Enter a value for field " + (i + 1) + ": " );
+                int Number = scanner.nextInt();
+                if (Number > 19) { // Assuming 0 and 20 are exclusive.
+                    System.out.println("The entered value is too high! All values must be between 0 and 20.");
+                    continue;
+                }
+                if (Number < 1) {
+                    System.out.println("The entered value is too low! All values must be between 0 and 20.");
+                    continue;
+                }
+                BingoCard[i] = Number;
+                break;
+            }
+        }
+
+        System.out.print("Your Bingo card contains the numbers: [ ");
+        for (int i = 0; i < BingoCard.length; i++) {
+            if (i == BingoCard.length - 1) {
+                System.out.println(BingoCard[i] + " ]");
+            } else {
+                System.out.print(BingoCard[i] + ", ");
+            }
+        }
     }
 
     public void DrawNumber() {
