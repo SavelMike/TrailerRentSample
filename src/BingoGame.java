@@ -18,6 +18,7 @@ public class BingoGame {
         while(true) {
             System.out.println("**********************");
             System.out.println("* BINGO");
+            System.out.println("**********************");
             System.out.println("* 1) Create a Bingo card");
             System.out.println("* 2) Draw a number");
             System.out.println("* 3) Check Bingo card");
