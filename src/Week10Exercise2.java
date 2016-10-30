@@ -47,6 +47,9 @@ public class Week10Exercise2{
 
     int SmallTrailers = 5;
     int LargeTrailers = 3;
+    int SmallTrailerRented = 0;
+    String[] SmallTrailersRenters = new String[5];
+    String[] LargeTrailersRenters = new String[3];
 
     public void rentSmallTrailer() {
         if (SmallTrailers == 0) {
@@ -66,11 +69,14 @@ public class Week10Exercise2{
                 char answer = input.charAt(0);
                 if (answer == 'n')
                     return;
-                if (answer == 'y')
-                    SmallTrailers --;
+                if (answer == 'y') {
                     break;
+                }
             }
         }
+        SmallTrailers--;
+        SmallTrailersRenters[SmallTrailerRented] = LastName;
+        SmallTrailerRented++;
     }
 
     public void rentLargeTrailer()
