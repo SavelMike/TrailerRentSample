@@ -44,8 +44,10 @@ public class Week10Exercise2{
             }
         }
     }
+
     int SmallTrailers = 5;
     int LargeTrailers = 3;
+
     public void rentSmallTrailer() {
         if (SmallTrailers == 0) {
             System.out.println("Unfortunately, there are no small trailers available!");
@@ -69,11 +71,7 @@ public class Week10Exercise2{
                     break;
             }
         }
-        
-
     }
-
-
 
     public void rentLargeTrailer()
     {
