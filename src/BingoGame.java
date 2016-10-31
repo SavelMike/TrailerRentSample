@@ -78,8 +78,6 @@ public class BingoGame {
                 if (Matches == false) {
                     BingoCard[i] = Number;
                     break;
-                }else {
-                    continue;
                 }
             }
         }
