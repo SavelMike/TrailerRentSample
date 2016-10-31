@@ -66,8 +66,21 @@ public class BingoGame {
                     System.out.println("The entered value is too low! All values must be between 0 and 20.");
                     continue;
                 }
-                BingoCard[i] = Number;
-                break;
+
+                boolean Matches = false;
+                for (int j = 0; j < BingoCard.length; j++) {
+                    if (Number == BingoCard[j]) {
+                        System.out.println("The number " + Number + " is already on your Bingo card. Choose a different value.");
+                        Matches = true;
+                        break;
+                    }
+                }
+                if (Matches == false) {
+                    BingoCard[i] = Number;
+                    break;
+                }else {
+                    continue;
+                }
             }
         }
 
