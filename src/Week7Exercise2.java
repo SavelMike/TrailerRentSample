@@ -27,15 +27,20 @@ public class Week7Exercise2 {
             int Choice = scanner.nextInt();
             if (Choice == 1) {
                 IDrawHouse();
+                continue;
             }
             if (Choice == 2) {
                 IDrawHalfPyramid();
+                continue;
             }
             if (Choice == 3) {
                 IDrawFullPyramid();
+                continue;
             }
             if (Choice == 0) {
+                System.out.println("Goodbye");
                 System.exit(0);
+                continue;
             }
         }
     }
