@@ -3,9 +3,18 @@ package Week2;
 public class Counter {
 
     private int value;
+    private int maxValue;
+
+    public void setLimit(int maximum) {
+        maxValue = maximum;
+    }
 
     public void count() {
-        value++;
+        if (maxValue > value) {
+            value++;
+        } else {
+            System.out.println("Limit exceeded");
+        }
     }
 
     public void undo() {
